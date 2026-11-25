@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Нүзүпбек жана Арзыгүл</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#eee7db;color:#79664c;font-family:Georgia,serif;text-align:center}
+.card{max-width:430px;min-height:100vh;margin:auto;padding:30px 22px;background:linear-gradient(#fffefa,#f7f0e5);border:5px double #c6ad83}
+.orn{color:#b69a68;font-size:27px;letter-spacing:7px}
+h1{font-size:38px;font-weight:normal;color:#a38658;line-height:1.5}
+h2{font-weight:normal;color:#a38658}
+p{line-height:1.8}
+.hidden{display:none}
+.envelope{margin:90px auto 30px;padding:45px 15px;background:#eee4d2;border:2px solid #c7ae83;box-shadow:0 8px 20px #b9a98c;cursor:pointer}
+.envelope h2{font-size:24px}
+button{width:100%;padding:15px;margin:7px 0;background:#eee5d6;border:1px solid #b69a68;color:#79664c;font-size:15px;border-radius:5px}
+.section{padding:20px 5px;margin:24px 0;border-top:1px solid #d6c5a5;border-bottom:1px solid #d6c5a5}
+.timer{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.time{background:#eee5d6;padding:12px 2px;border-radius:6px}
+.time b{display:block;font-size:23px}
+.photo{width:100%;aspect-ratio:4/5;object-fit:cover;border:5px solid white}
+</style>
+</head>
+<body>
+<div class="card">
+
+<div id="cover">
+<div class="orn">✧ ❀ ✧</div>
+<p>WEDDING INVITATION</p>
+<div class="envelope" onclick="openInvite()">
+<div class="orn">♡</div>
+<h2>Чакыруу баракчасы</h2>
+<p>Ачуу үчүн басыңыз</p>
+<div class="orn">✧</div>
+</div>
+<p>НҮЗҮПБЕК & АРЗЫГҮЛ</p>
+</div>
+
+<div id="content" class="hidden">
+<div class="orn">✧ ❀ ✧</div>
+<p>УРМАТТУУ КААЛУУ КОНУКТОР!</p>
+<h2>Сиздерди үйлөнүү тоюбузга чакырабыз!</h2>
+
+<h1>Нүзүпбек<br>&<br>Арзыгүл</h1>
+
+<!-- Сүрөттү кийин кошобуз -->
+<div class="section">
+<p>Биздин кубанычтуу күнүбүзгө күбө болуңуздар!</p>
+</div>
+
+<div class="section">
+<div class="orn">❀</div>
+<p>SAVE THE DATE</p>
+<h1>13 ДЕКАБРЬ</h1>
+<h2>2026-жыл</h2>
+<p>Саат 16:00</p>
+<p><b>Дареги:</b> Разьезд</p>
+<p><b>Ресторан:</b> Сумая ГРАНД</p>
+</div>
+
+<h2>Той ээлери</h2>
+<h2>Жаркынали жана Жумагүл</h2>
+
+<div class="section">
+<h2>Тойго чейин калды</h2>
+<div class="timer">
+<div class="time"><b id="d">0</b>КҮН</div>
+<div class="time"><b id="h">0</b>СААТ</div>
+<div class="time"><b id="m">0</b>МҮНӨТ</div>
+<div class="time"><b id="s">0</b>СЕКУНД</div>
+</div>
+</div>
+
+<div class="section">
+<h2>Катышууңузду ырастаңыз</h2>
+<button onclick="reply('Ооба, сөзсүз келем')">✓ Ооба, келем</button>
+<button onclick="reply('Бара албайм')">✕ Бара албайм</button>
+</div>
+
+<p>Кубанычыбызды биз менен бөлүшүңүз!</p>
+<div class="orn">❀ ✧ ❀</div>
+
+</div>
+</div>
+
+<script>
+function openInvite(){
+ document.getElementById('cover').style.display='none';
+ document.getElementById('content').classList.remove('hidden');
+}
+const target=new Date('2026-12-13T16:00:00+06:00').getTime();
+function countdown(){
+ let t=Math.max(0,target-Date.now());
+ document.getElementById('d').textContent=Math.floor(t/86400000);
+ document.getElementById('h').textContent=Math.floor(t/3600000)%24;
+ document.getElementById('m').textContent=Math.floor(t/60000)%60;
+ document.getElementById('s').textContent=Math.floor(t/1000)%60;
+}
+countdown();setInterval(countdown,1000);
+function reply(answer){
+ let msg='Нүзүпбек жана Арзыгүлдүн тою: '+answer;
+ window.open('https://wa.me/996772380182?text='+encodeURIComponent(msg),'_blank');
+}
+</script>
+</body>
+</html>
